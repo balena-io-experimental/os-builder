@@ -1,0 +1,30 @@
+{
+  "slug": "tegra-gpu",
+  "type": "sw.image.overlay",
+  "name": "Overlay to provide Tegra GPU support",
+  "version": "1.0.0",
+  "requires": [
+    {
+      "anyOf": [
+        { "type": "hw.device-type", "slug": "jetson-tx2" },
+        { "type": "hw.device-type", "slug": "jetson-nano" }
+      ],
+      "allOf" : [
+	      { "type": "sw.os", "slug": "yocto", "externalVersion": "dunfell"},
+	      { "type": "sw.os", "slug": "balenaos", "externalVersion": "2.x"}
+      ]
+    }
+  ],
+  "composedOf": [
+	  { "type": "sw.recipe.yocto", "slug": "libglvnd"},
+	  { "type": "sw.recipe.yocto", "slug": "libtirpc"},
+	  { "type": "sw.recipe.yocto", "slug": "libcap"},
+	  { "type": "sw.recipe.yocto", "slug": "elfutils"},
+	  { "type": "sw.recipe.yocto", "slug": "tegra-libraries-cuda"},
+	  { "type": "sw.recipe.yocto", "slug": "tegra-libraries-multimedia"},
+	  { "type": "sw.recipe.yocto", "slug": "libnvidia-container-tools"},
+	  { "type": "sw.recipe.yocto", "slug": "nvidia-container-toolkit"},
+	  { "type": "sw.recipe.yocto", "slug": "nvidia-container-runtime"},
+	  { "type": "sw.recipe.yocto", "slug": "go-runtime"}
+  ]
+}

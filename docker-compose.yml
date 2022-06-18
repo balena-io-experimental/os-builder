@@ -1,0 +1,20 @@
+version: '3'
+services:
+  os-builder:
+    build:
+      context: os-builder
+      dockerfile: Dockerfile
+    volumes:
+      - "${WORKDIR}:/work"
+      - "${SSH_AUTH_SOCK}:/tmp/ssh-agent"
+    environment:
+      - REPOSITORY_URL=${REPOSITORY_URL}
+      - VERSION=${VERSION}
+      - MACHINE=${MACHINE}
+      - BLOCK=${BLOCK}
+      - BUILDER_UID=${BUILDER_UID}
+      - BUILDER_GID=${BUILDER_GID}
+      - BALENA_TOKEN=${BALENA_TOKEN}
+      - API_ENV=${API_ENV}
+      - VERBOSE=${VERBOSE}
+    privileged: true
